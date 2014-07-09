@@ -1,0 +1,6 @@
+<%= form_for Comment.new do |f| %>
+  <%= f.text_area :text %>
+  <%= f.submit %>
+<% end %>
+
+<%= render @comments %>
