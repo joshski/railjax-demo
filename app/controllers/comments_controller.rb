@@ -4,12 +4,11 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.create! comment_params
+    @comment = Comment.create! comment_params
 
-    if request.xhr?
-      render comment
-    else
-      redirect_to action: :index
+    respond_to do |format|
+      format.html { redirect_to action: :index }
+      format.js
     end
   end
 
