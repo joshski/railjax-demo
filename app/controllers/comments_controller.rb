@@ -4,8 +4,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    Comment.create! comment_params
-    redirect_to action: :index
+    comment = Comment.create! comment_params
+
+    respond_to do |format|
+      format.html { redirect_to action: :index  }
+      format.json { render json: comment }
+    end
   end
 
   private
